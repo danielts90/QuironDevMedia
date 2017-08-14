@@ -1,9 +1,7 @@
 ﻿using Quiron.LojaVirtual.Dominio.Entidade;
 using Quiron.LojaVirtual.Dominio.Repositorio;
-using System;
-using System.Collections.Generic;
+using Quiron.LojaVirtual.Web.Models;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Quiron.LojaVirtual.Web.Controllers
@@ -14,7 +12,8 @@ namespace Quiron.LojaVirtual.Web.Controllers
         // GET: Carrinho
         public RedirectToRouteResult Adicionar(int produtoId, string returnUrl)
         {
-            var produto = _repositorio.Produtos.FirstOrDefault(p => p.ProdutoId == produtoId);
+            var produto = _repositorio.Produtos
+                .FirstOrDefault(p => p.ProdutoId == produtoId);
 
             if(produto != null)
             {
@@ -25,7 +24,8 @@ namespace Quiron.LojaVirtual.Web.Controllers
 
         public RedirectToRouteResult Remover(int produtoId, string returnUrl)
         {
-            var produto = _repositorio.Produtos.FirstOrDefault(p => p.ProdutoId == produtoId);
+            var produto = _repositorio.Produtos
+                .FirstOrDefault(p => p.ProdutoId == produtoId);
 
             if(produto != null)
             {
@@ -34,6 +34,14 @@ namespace Quiron.LojaVirtual.Web.Controllers
             return RedirectToAction("Index", new { returnUrl });
         }
 
+        public ViewResult Index(string returnUrl)
+        {
+            return View(new CarrinhoViewModel
+            {
+                Carrinho = ObterCarrinho(),
+                ReturnUrl = returnUrl
+            });
+        }
 
         private Carrinho ObterCarrinho()
         {
