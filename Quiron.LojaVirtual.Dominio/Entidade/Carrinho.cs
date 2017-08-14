@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Quiron.LojaVirtual.Dominio.Entidade
 {
     public class Carrinho
     {
         private readonly List<ItemCarrinho> _itemCarrinho = new List<ItemCarrinho>();
-        //Adicionar
         public void AdicionarItem(Produto produto, int quantidade)
         {
             var item = _itemCarrinho.FirstOrDefault(p => p.Produto.ProdutoId == produto.ProdutoId);
@@ -27,22 +23,18 @@ namespace Quiron.LojaVirtual.Dominio.Entidade
                 item.Quantidade += quantidade;
             }
         }
-        //Remover
         public void RemoverItem(Produto produto)
         {
-            _itemCarrinho.RemoveAll(p => produto.ProdutoId == produto.ProdutoId);
+            _itemCarrinho.RemoveAll(p => p.Produto.ProdutoId == produto.ProdutoId);
         }
-        //Obter valor total
         public decimal ObterValorTotal()
         {
             return _itemCarrinho.Sum(e => e.Produto.Preco * e.Quantidade);
         }
-        //Limpar Carrinho
         public void LimparCarrinho()
         {
             _itemCarrinho.Clear();
         }
-        //Itens do Carrinho
         public IEnumerable<ItemCarrinho> ItensCarrinho
         {
             get { return _itemCarrinho; }
