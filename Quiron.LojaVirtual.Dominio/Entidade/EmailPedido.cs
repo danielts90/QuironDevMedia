@@ -19,7 +19,7 @@ namespace Quiron.LojaVirtual.Dominio.Entidade
 
         public void ProcessarPedido(Carrinho carrinho, Pedido pedido)
         {
-            using (var smtpClient = new SmtpClient)
+            using (var smtpClient = new SmtpClient())
             {
                 smtpClient.EnableSsl = _emailConfiguracoes.UsarSsl;
                 smtpClient.Host = _emailConfiguracoes.ServidorSmtp;
@@ -57,7 +57,7 @@ namespace Quiron.LojaVirtual.Dominio.Entidade
                     .AppendLine(pedido.Cidade ?? "")
                     .AppendLine(pedido.Complemento ?? "")
                     .AppendLine("----------------------------------")
-                    .AppendFormat("Para presente?: {0}", pedido.EmbrulhaPresente ? "Sim", "Não");
+                    .AppendFormat("Para presente?: {0}", pedido.EmbrulhaPresente ? "Sim" : "Não");
 
                 var mailMessage = new MailMessage(
                     _emailConfiguracoes.De,
