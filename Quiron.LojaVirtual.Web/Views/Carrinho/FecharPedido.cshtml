@@ -15,6 +15,7 @@
     <div class="form-group">
         <label>Nome do cliente</label>
         @Html.TextBoxFor(x => x.NomeCliente, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.NomeCliente, "Informe o seu nome");
     </div>
 
     foreach (var property in ViewData.ModelMetadata.Properties)
