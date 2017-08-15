@@ -31,8 +31,10 @@ namespace Quiron.LojaVirtual.Dominio.Entidade
 
         [Display(Name = "Email")]
         [Required(ErrorMessage = "Informe o seu e-mail")]
-        [EmailAddress(ErrorMessage ="E-mail invalido"]
+        [EmailAddress(ErrorMessage ="E-mail invalido")]
         public string Email { get; set; }
+
+        public string Estado { get; set; }
 
         public bool EmbrulhaPresente { get; set; }
 
