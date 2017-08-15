@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="uft-8" />
+    <meta name="viewport" content="width-device-width" />
+    <title>@ViewBag.Title - Quiron - Administrativo</title>
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/ErroEstilo.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+
+        <div>
+            @if(TempData["mensagem"] != null)
+            {
+                <div class="alert alert-success">@TempData["mesagem"]</div>
+            }
+            @RenderBody()
+        </div>
+
+    </div>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.intellisense.js"></script>
+</body>
+</html>
