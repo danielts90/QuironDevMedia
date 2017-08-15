@@ -1,14 +1,14 @@
 ﻿@model Quiron.LojaVirtual.Web.Models.CarrinhoViewModel
 
 @{
-    @ViewBag.Titel = "Quiron: Seu Carrinho";
+    ViewBag.Title = "Quiron: Seu Carrinho";
 }
 
 <h2>Seu Carrinho</h2>
 
 <style>
     #carrinhoTable td {
-        vertical-align: middle
+        vertical-align: middle;
     }
 </style>
 
@@ -43,16 +43,15 @@
         <tfoot>
             <tr>
                 <td colspan="3" class="text-right">Total: </td>
-                <td class="text-right">@Model.Carrinho.ObterValorTotal().ToString()</td>
-                
+                <td class="text-right">@Model.Carrinho.ObterValorTotal().ToString("c")</td>            
             </tr>
         </tfoot>
     </table>
 
-    <div>
+<div class="text-center">
         <a class="btn btn-primary" href="@Model.ReturnUrl">Continuar Comprando</a>
         
-        @Html.ActionLink("Fechar o pedido", "FecharPedido", new {@class = "btn btn-primary" })
+        @Html.ActionLink("Fechar o pedido", "FecharPedido", "Carrinho", new {@class = "btn btn-primary" })
 
     </div>
 

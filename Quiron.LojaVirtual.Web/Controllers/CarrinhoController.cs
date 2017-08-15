@@ -9,7 +9,7 @@ namespace Quiron.LojaVirtual.Web.Controllers
     public class CarrinhoController : Controller
     {
         private ProdutosRepositorio _repositorio = new ProdutosRepositorio();
-        // GET: Carrinho
+
         public RedirectToRouteResult Adicionar(int produtoId, string returnUrl)
         {
             var produto = _repositorio.Produtos
@@ -19,7 +19,7 @@ namespace Quiron.LojaVirtual.Web.Controllers
             {
                 ObterCarrinho().AdicionarItem(produto, 1);
             }
-            return RedirectToAction("Index", new { returnUrl });
+            return RedirectToAction("Index", new {returnUrl});
         }
 
         public RedirectToRouteResult Remover(int produtoId, string returnUrl)
@@ -31,7 +31,7 @@ namespace Quiron.LojaVirtual.Web.Controllers
             {
                 ObterCarrinho().RemoverItem(produto);
             }
-            return RedirectToAction("Index", new { returnUrl });
+            return RedirectToAction("Index", new {returnUrl});
         }
 
         public ViewResult Index(string returnUrl)
