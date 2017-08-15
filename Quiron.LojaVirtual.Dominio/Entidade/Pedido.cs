@@ -10,9 +10,10 @@ namespace Quiron.LojaVirtual.Dominio.Entidade
     public class Pedido
     {
         [Required(ErrorMessage="Informe seu nome")]
+        [Display(Name="Nome do Cliente")]
         public string  NomeCliente { get; set; }
         [Display(Name="Cep: ")]
-        public int Cep { get; set; }
+        public int? Cep { get; set; }
 
         [Required(ErrorMessage ="Informe o seu endereço")]
         [Display(Name ="Endereço")]
@@ -34,6 +35,7 @@ namespace Quiron.LojaVirtual.Dominio.Entidade
         [EmailAddress(ErrorMessage ="E-mail invalido")]
         public string Email { get; set; }
 
+        [Display(Name ="Estado: ")]
         public string Estado { get; set; }
 
         public bool EmbrulhaPresente { get; set; }
