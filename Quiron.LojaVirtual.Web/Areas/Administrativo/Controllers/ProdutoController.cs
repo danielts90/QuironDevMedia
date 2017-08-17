@@ -16,5 +16,11 @@ namespace Quiron.LojaVirtual.Web.Areas.Administrativo.Controllers
             var produtos = _repositorio.Produtos;
             return View(produtos);
         }
+
+        public ViewResult Alterar(int produtoId)
+        {
+            var produto = _repositorio.Produtos.FirstOrDefault(p => p.ProdutoId == produtoId);
+            return View(produto);
+        }
     }
 }
