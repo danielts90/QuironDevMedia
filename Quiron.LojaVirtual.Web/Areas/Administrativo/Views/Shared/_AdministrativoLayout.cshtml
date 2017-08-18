@@ -8,20 +8,22 @@
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/ErroEstilo.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
 </head>
+
 <body>
     <div>
 
         <div>
             @if(TempData["mensagem"] != null)
             {
-                <div class="alert alert-success">@TempData["mesagem"]</div>
+                <div class="alert alert-success"><strong>@TempData["mensagem"]</strong></div>
             }
             @RenderBody()
         </div>
 
     </div>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    <script src="~/Scripts/jquery-1.10.2.intellisense.js"></script>
+ 
 </body>
 </html>
