@@ -11,7 +11,7 @@
         <h3>Alterar - @Model.Nome</h3>
     </div>
 
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("Alterar", "Produto"))
     {
         <div class="panel-body">
             @Html.HiddenFor(m => m.ProdutoId)

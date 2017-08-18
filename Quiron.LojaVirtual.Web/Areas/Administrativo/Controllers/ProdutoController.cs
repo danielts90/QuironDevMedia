@@ -35,5 +35,21 @@ namespace Quiron.LojaVirtual.Web.Areas.Administrativo.Controllers
             }
             return View(produto);
         }
+
+        public ViewResult NovoProduto()
+        {
+            return View("Alterar", new Produto());
+        }
+
+        [HttpPost]
+        public ActionResult Excluir(int produtoId)
+        {
+            var prod = _repositorio.Excluir(produtoId);
+            if(prod != null)
+            {
+                TempData["mensagem"] = string.Format("{0} excluído com sucesso.", prod.Nome);
+            }
+            return RedirectToAction("Index");
+        }
     }
 }
