@@ -21,7 +21,7 @@
         <div>
             @if(TempData["mensagem"] != null)
             {
-                <div class="alert alert-success"><strong>@TempData["mensagem"]</strong></div>
+                <div id="mensagem" class="alert alert-success"><strong>@TempData["mensagem"]</strong></div>
             }
             @RenderBody()
         </div>
