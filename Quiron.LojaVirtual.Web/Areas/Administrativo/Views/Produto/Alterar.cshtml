@@ -1,20 +1,45 @@
 ﻿@model Quiron.LojaVirtual.Dominio.Entidade.Produto
 
 @{
-    ViewBag.Title = "Alterar";
+    ViewBag.Title = "Alterar" + @Model.Nome;
     Layout = "~/Areas/Administrativo/Views/Shared/_AdministrativoLayout.cshtml";
 }
 
-<h2>Alterar - @Model.Nome</h2>
 
-@using (Html.BeginForm())
-{
-    @Html.EditorForModel()
+<div class="panel">
+    <div class="panel-heading">
+        <h3>Alterar - @Model.Nome</h3>
+    </div>
 
-    <input type="submit" value="Salvar" />
+    @using (Html.BeginForm())
+    {
+        <div class="panel-body">
+            @Html.HiddenFor(m => m.ProdutoId)
 
-}
+            @foreach (var property in ViewData.ModelMetadata.Properties.Where(p => p.PropertyName != "ProdutoId"))
+            {
+                <div class="form-group">
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+                    <label>@(property.DisplayName ?? property.PropertyName)</label>
+
+                    @if (property.PropertyName == "Descricao")
+                    {
+                        @Html.TextArea(property.PropertyName, null, new { @class = "form-control", rows = 5 })
+                    }
+                    else
+                    {
+                        @Html.TextBox(property.PropertyName, null, new { @class = "form-control" })
+                    }
+
+
+                </div>
+            }
+        </div>
+    }
+
+    <div class="panel-footer">
+        <input type="submit" value="Salvar" class="btn btn-primary"/>
+        @Html.ActionLink("Cancelar e retornar", "Index", null, new { @class = "btn btn-btndefault" })
+    </div>
+
 </div>
