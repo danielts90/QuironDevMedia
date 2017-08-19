@@ -61,4 +61,33 @@
 
 @Html.Partial("Confirmacao")
 
+<script>
+    $(function () {
+
+        //Abrir o modal
+        $(".btn-xs").click(function (e) {
+            e.preventDefault();
+            var id = this.id;
+            var nome = this.name;
+
+            $("#deleteModal .modal-body input[type=hidden]").val(id);
+            $("#deleteModal .modal-body span").text(nome);
+            $('#deleteModal').modal('show');
+        });
+
+        $("#deleteModal .modal-footer button").click(function (e){
+            e.preventDefault();
+            var url = "Administrativo/Produto/Excluir/";
+            var id = $(".modal-body input[type=hidden]").val();
+
+            var rowNo = "row" + id;
+
+            $.ajax({
+
+            })
+        });
+
+    });
+</script>
+
 
