@@ -1,10 +1,7 @@
 ﻿using Quiron.LojaVirtual.Dominio.Entidade;
 using Quiron.LojaVirtual.Dominio.Repositorio;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace Quiron.LojaVirtual.Web.Controllers
 {
@@ -12,17 +9,44 @@ namespace Quiron.LojaVirtual.Web.Controllers
     {
         private AdministradoresRepositorio _repositorio = new AdministradoresRepositorio();
         // GET: Autenticacao
-        public ActionResult Index()
+        [HttpGet]
+        public ActionResult Login(string returnUrl)
         {
-            return View();
+            ViewBag.ReturnUrl = returnUrl;
+            return View(new Administrador());
         }
 
-        public void  Login()
+        [HttpPost]
+        public ActionResult Login(Administrador administrador, string returnUrl)
         {
-            var administrador = new Administrador();
-            administrador.Login = "admin";
+            if (ModelState.IsValid)
+            {
+                var admin = _repositorio.ObterAdministrador(administrador);
 
-            _repositorio.ObterAdministrador(administrador)
+                if(admin != null)
+                {
+                    if(!Equals(administrador.Senha, admin.Senha))
+                    {
+                        ModelState.AddModelError("","Senha inválida");
+                    }
+                    else
+                    {
+                        FormsAuthentication.SetAuthCookie(admin.Login, false);
+
+                        if (Url.IsLocalUrl(returnUrl)
+                        && returnUrl.Length > 1
+                        && returnUrl.StartsWith("/")
+                        && !returnUrl.StartsWith("//"))
+                            return Redirect(returnUrl);
+
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Usuário não localizado");
+                }
+            }
+            return View(new Administrador());
         }
     }
 }
