@@ -22,5 +22,7 @@ namespace Quiron.LojaVirtual.Dominio.Entidade
         [Required(ErrorMessage ="Digite o valor")]
         [Range(0.01, Double.MaxValue, ErrorMessage = "Valor inválido")]
         public decimal Preco { get; set; }
+        public byte[] Imagem { get; set; }
+        public string ImageMimeType { get; set; }
     }
 }
