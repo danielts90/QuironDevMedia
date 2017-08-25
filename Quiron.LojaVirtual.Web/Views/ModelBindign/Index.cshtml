@@ -1,0 +1,15 @@
+﻿@model Quiron.LojaVirtual.Dominio.Entidade.Produto
+
+@using (Html.BeginForm("Editar", "ModelBinding", FormMethod.Post)) 
+{
+    <div>
+        Nome: 
+        <input type="text" name="Nome" id="Nome"/>
+        <br />
+        Preço:
+        <input type="text" name="Preco" id="Preco" />
+
+        <input type="submit" value="Cadastrar"/>
+
+    </div>
+}
