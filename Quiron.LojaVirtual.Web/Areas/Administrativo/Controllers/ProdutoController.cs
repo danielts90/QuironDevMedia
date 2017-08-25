@@ -81,7 +81,7 @@ namespace Quiron.LojaVirtual.Web.Areas.Administrativo.Controllers
         {
             var prod = _repositorio.Produtos.FirstOrDefault(x => x.ProdutoId == produtoId);
 
-            if(prod != null)
+            if (prod != null)
             {
                 return File(prod.Imagem, prod.ImageMimeType);
             }

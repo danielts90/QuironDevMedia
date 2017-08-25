@@ -34,5 +34,17 @@ namespace Quiron.LojaVirtual.Web.Controllers
 
             return View(model);
         }
+
+        public FileContentResult ObterImagem(int produtoId)
+        {
+            var prod = _repositorio.Produtos.FirstOrDefault(x => x.ProdutoId == produtoId);
+
+            if (prod != null)
+            {
+                return File(prod.Imagem, prod.ImageMimeType);
+            }
+            return null;
+
+        }
     }
 }
