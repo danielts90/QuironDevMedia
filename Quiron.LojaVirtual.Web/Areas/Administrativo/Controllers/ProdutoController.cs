@@ -1,7 +1,5 @@
 ﻿using Quiron.LojaVirtual.Dominio.Entidade;
 using Quiron.LojaVirtual.Dominio.Repositorio;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -11,10 +9,11 @@ namespace Quiron.LojaVirtual.Web.Areas.Administrativo.Controllers
     [Authorize]
     public class ProdutoController : Controller
     {
-        private readonly ProdutosRepositorio _repositorio = new ProdutosRepositorio();
+        private ProdutosRepositorio _repositorio = new ProdutosRepositorio();
         
         public ActionResult Index()
         {
+            _repositorio = new ProdutosRepositorio();
             var produtos = _repositorio.Produtos;
             return View(produtos);
         }
@@ -26,13 +25,25 @@ namespace Quiron.LojaVirtual.Web.Areas.Administrativo.Controllers
         }
 
         [HttpPost]
-        public ActionResult Alterar(Produto produto, HttpPostedFileBase imagem = null)
+        public ActionResult Alterar(Produto produto, HttpPostedFileBase image = null)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
+
+                if (image != null)
+                {
+                    produto.ImageMimeType = image.ContentType;
+                    produto.Imagem = new byte[image.ContentLength];
+                    image.InputStream.Read(produto.Imagem, 0, image.ContentLength);
+                }
+
+                _repositorio = new ProdutosRepositorio();
                 _repositorio.Salvar(produto);
-                TempData["mensagem"] = string.Format("{0} o produto foi salvo com sucesso", produto.Nome);
+
+                TempData["mensagem"] = string.Format("{0} foi salvo com sucesso", produto.Nome);
+
                 return RedirectToAction("Index");
+
             }
             return View(produto);
         }
@@ -56,6 +67,7 @@ namespace Quiron.LojaVirtual.Web.Areas.Administrativo.Controllers
         [HttpPost]
         public JsonResult Excluir(int produtoId)
         {
+
             string mensagem = string.Empty;
             var prod = _repositorio.Excluir(produtoId);
             if (prod != null)
@@ -63,6 +75,18 @@ namespace Quiron.LojaVirtual.Web.Areas.Administrativo.Controllers
                 mensagem = $"O produto {prod.Nome} foi excluído com sucesso!!!";
             }
             return Json(mensagem, JsonRequestBehavior.AllowGet);
+        }
+
+        public FileContentResult ObterImagem(int produtoId)
+        {
+            var prod = _repositorio.Produtos.FirstOrDefault(x => x.ProdutoId == produtoId);
+
+            if(prod != null)
+            {
+                return File(prod.Imagem, prod.ImageMimeType);
+            }
+            return null;
+
         }
 
 
