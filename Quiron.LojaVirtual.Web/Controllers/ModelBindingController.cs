@@ -16,9 +16,13 @@ namespace Quiron.LojaVirtual.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Editar()
+        public ActionResult Editar(Produto prod)
         {
             var produto = new Produto();
+
+            produto.Nome = prod.Nome;
+            produto.Preco = prod.Preco;
+
             return RedirectToAction("Index");
         }
     }

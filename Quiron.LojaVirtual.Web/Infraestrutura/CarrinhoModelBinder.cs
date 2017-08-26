@@ -6,7 +6,7 @@ namespace Quiron.LojaVirtual.Web.Infraestrutura
     public class CarrinhoModelBinder : System.Web.Mvc.IModelBinder
     {
         private const string SessionKey = "Carrinho";
-        public object BindModel(ControllerContext controllerContext, System.Web.Mvc.ModelBindingContext bindingContext)
+        public object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
         {
             //Obter Carrinho da sessão
             Carrinho carrinho = null;
