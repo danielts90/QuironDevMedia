@@ -35,6 +35,7 @@ namespace Quiron.LojaVirtual.Web.Controllers
             return View(model);
         }
 
+        [Route("Vitrine/ObterImagem/{produtoId}")]
         public FileContentResult ObterImagem(int produtoId)
         {
             var prod = _repositorio.Produtos.FirstOrDefault(x => x.ProdutoId == produtoId);

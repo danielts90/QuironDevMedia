@@ -7,6 +7,8 @@ namespace Quiron.LojaVirtual.Web
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
+            routes.MapMvcAttributeRoutes();
+
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
 
@@ -34,9 +36,9 @@ namespace Quiron.LojaVirtual.Web
 
             routes.MapRoute(null, "{controller}/{action}");
 
-            routes.MapRoute("ObterImage",
-                "Vitrine/ObterImagem/{produtoId}",
-                new { controller = "Vitrine", action = "ObterImagem", produtoId = UrlParameter.Optional });
+            //routes.MapRoute("ObterImage",
+            //    "Vitrine/ObterImagem/{produtoId}",
+            //    new { controller = "Vitrine", action = "ObterImagem", produtoId = UrlParameter.Optional });
 
         }
     }
