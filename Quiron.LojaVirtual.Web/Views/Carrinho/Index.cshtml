@@ -15,9 +15,10 @@
 <table id="carrinhoTable" class="table">
     <thead>
         <tr>
-            <th>Quantidade</th>
+            @*<th>Quantidade</th>*@
             <th>Produto</th>
             <th class="text-right">Preço</th>
+
             <th class="text-right">Subtotal</th>
         </tr>
     </thead>
@@ -25,9 +26,23 @@
         @foreach (var item in Model.Carrinho.ItensCarrinho)
         {
             <tr>
-                <td class="text-center">@item.Quantidade</td>
+                @*<td class="text-center">@item.Quantidade</td>*@
+
                 <td class="text-left">@item.Produto.Nome</td>
                 <td class="text-right">@item.Produto.Preco.ToString("c")</td>
+
+                <td>
+                    @using (Html.BeginForm("Adicionar", "Carrinho"))
+                    {
+                        @Html.Hidden("ProdutoId", @item.Produto.ProdutoId)
+                        @Html.HiddenFor(x => x.ReturnUrl)
+                        @Html.TextBox("Quantidade", @item.Quantidade, new { @class = "quantidade-textbox", @type="number", min="1", max="10"})
+
+                        <input class="btn btn-sm btn-danger" type="submit" value="Atualizar"/>
+
+                    }
+                </td>
+
                 <td class="text-right">@((item.Quantidade * item.Produto.Preco).ToString("c"))</td>
                 <td>
                     @using (Html.BeginForm("Remover", "Carrinho"))
