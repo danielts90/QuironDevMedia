@@ -15,10 +15,10 @@
 <table id="carrinhoTable" class="table">
     <thead>
         <tr>
-            @*<th>Quantidade</th>*@
+
             <th>Produto</th>
             <th class="text-right">Preço</th>
-
+            <th class="text-left">Quantidade</th>
             <th class="text-right">Subtotal</th>
         </tr>
     </thead>
@@ -26,19 +26,17 @@
         @foreach (var item in Model.Carrinho.ItensCarrinho)
         {
             <tr>
-                @*<td class="text-center">@item.Quantidade</td>*@
 
                 <td class="text-left">@item.Produto.Nome</td>
                 <td class="text-right">@item.Produto.Preco.ToString("c")</td>
-
                 <td>
                     @using (Html.BeginForm("Adicionar", "Carrinho"))
                     {
                         @Html.Hidden("ProdutoId", @item.Produto.ProdutoId)
                         @Html.HiddenFor(x => x.ReturnUrl)
-                        @Html.TextBox("Quantidade", @item.Quantidade, new { @class = "quantidade-textbox", @type="number", min="1", max="10"})
+                        @Html.TextBox("Quantidade", @item.Quantidade, new { @class = "quantidade-textbox", @type = "number", min = "1", max = "10" })
 
-                        <input class="btn btn-sm btn-danger" type="submit" value="Atualizar"/>
+                        <input class="btn btn-sm btn-danger" type="submit" value="Atualizar" />
 
                     }
                 </td>
@@ -49,24 +47,24 @@
                     {
                         @Html.Hidden("ProdutoId", item.Produto.ProdutoId)
                         @Html.HiddenFor(x => x.ReturnUrl)
-                        <input class="btn btn-sm btn-warning" type="submit" value="Remover"/>
+                        <input class="btn btn-sm btn-warning" type="submit" value="Remover" />
                     }
                 </td>
             </tr>
         }
-        </tbody>
-        <tfoot>
-            <tr>
-                <td colspan="3" class="text-right">Total: </td>
-                <td class="text-right">@Model.Carrinho.ObterValorTotal().ToString("c")</td>            
-            </tr>
-        </tfoot>
-    </table>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3" class="text-right">Total: </td>
+            <td class="text-right">@Model.Carrinho.ObterValorTotal().ToString("c")</td>
+        </tr>
+    </tfoot>
+</table>
 
 <div class="text-center">
-        <a class="btn btn-primary" href="@Model.ReturnUrl">Continuar Comprando</a>
-        
-        @Html.ActionLink("Fechar o pedido", "FecharPedido", "Carrinho", new {@class = "btn btn-primary" })
+    <a class="btn btn-primary" href="@Model.ReturnUrl">Continuar Comprando</a>
 
-    </div>
+    @Html.ActionLink("Fechar o pedido", "FecharPedido", "Carrinho", new { @class = "btn btn-primary" })
+
+</div>
 
