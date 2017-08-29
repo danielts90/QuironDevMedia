@@ -11,26 +11,48 @@ namespace Quiron.LojaVirtual.Web.Controllers
     public class VitrineController : Controller
     {
         private ProdutosRepositorio _repositorio = new ProdutosRepositorio();
-        public int produtosPorPagina = 8;
-        // GET: Vitrine
+        public int produtosPorPagina = 12;
+      
+        //public ViewResult ListaProdutos(string categoria, int pagina = 1)
+        //{
+        //    var model = new ProdutosViewModel()
+        //    {
+        //        Produtos = _repositorio.Produtos
+        //             .Where(p => categoria == null || p.Categoria.Trim() == categoria)
+        //             .OrderBy(p => p.Descricao)
+        //             .Skip((pagina - 1) * produtosPorPagina)
+        //             .Take(produtosPorPagina),
+
+        //        Paginacao = new Paginacao()
+        //        {
+        //            PaginaAtual = pagina,
+        //            ItensPorPagina = produtosPorPagina,
+        //            ItensTotal = categoria == null ? _repositorio.Produtos.Count() : _repositorio.Produtos.Where(p => p.Categoria.Trim() == categoria).Count()
+        //        },
+        //        CategoriaAtual = categoria
+        //    };
+
+        //    return View(model);
+        //}
+
         public ViewResult ListaProdutos(string categoria, int pagina = 1)
         {
-            var model = new ProdutosViewModel()
-            {
-                Produtos = _repositorio.Produtos
-                     .Where(p => categoria == null || p.Categoria.Trim() == categoria)
-                     .OrderBy(p => p.Descricao)
-                     .Skip((pagina - 1) * produtosPorPagina)
-                     .Take(produtosPorPagina),
+            var model = new ProdutosViewModel();
 
-                Paginacao = new Paginacao()
-                {
-                    PaginaAtual = pagina,
-                    ItensPorPagina = produtosPorPagina,
-                    ItensTotal = categoria == null ? _repositorio.Produtos.Count() : _repositorio.Produtos.Where(p => p.Categoria.Trim() == categoria).Count()
-                },
-                CategoriaAtual = categoria
-            };
+            var rdn = new Random();
+
+            if(categoria != null)
+            {
+                model.Produtos = _repositorio.Produtos
+                    .Where(p => p.Categoria == categoria)
+                    .OrderBy(x => rdn.Next()).ToList();
+            }
+            else
+            {
+                model.Produtos = _repositorio.Produtos
+                    .OrderBy(x => rdn.Next())
+                    .Take(produtosPorPagina).ToList();
+            }
 
             return View(model);
         }

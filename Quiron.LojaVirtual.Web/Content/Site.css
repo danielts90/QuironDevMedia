@@ -16,3 +16,8 @@ textarea {
 .quantidade-textbox{
     width:50px;
 }
+
+a.deco-nome{
+    color: #ffffff;
+    text-decoration: none;
+}
