@@ -13,7 +13,7 @@ namespace Quiron.LojaVirtual.Dominio.Repositorio
 
         public IEnumerable<Categoria> ObterCategoria()
         {
-            return _context.Categoria.OrderBy(c => c.CategoriaDescricao);
+            return _context.Categorias.OrderBy(c => c.CategoriaDescricao);
         }
     }
 }

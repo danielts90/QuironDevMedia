@@ -34,7 +34,6 @@ app.ObterClubesNacionais = function () {
 }
 
 
-
 app.ObterClubesInternacionais = function () {
 
     $.getJSON('menu/obterclubesinternacionais', function (data) {
