@@ -80,6 +80,7 @@
     <Compile Include="Entidade\Modalidade.cs" />
     <Compile Include="Entidade\Pedido.cs" />
     <Compile Include="Entidade\Produto.cs" />
+    <Compile Include="Entidade\ProdutoVItrine.cs" />
     <Compile Include="Entidade\Vitrine\Clubes.cs" />
     <Compile Include="Entidade\Vitrine\ClubesInternacionais.cs" />
     <Compile Include="Entidade\Vitrine\ClubesNacionais.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="Repositorio\CategoriaRepositorio.cs" />
     <Compile Include="Repositorio\EfDbContext.cs" />
     <Compile Include="Repositorio\MenuRepositorio.cs" />
+    <Compile Include="Repositorio\ProdutoModeloRepositorio.cs" />
     <Compile Include="Repositorio\ProdutosRepositorio.cs" />
   </ItemGroup>
   <ItemGroup />
