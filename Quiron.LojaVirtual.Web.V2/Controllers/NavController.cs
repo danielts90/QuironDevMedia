@@ -11,10 +11,13 @@ namespace Quiron.LojaVirtual.Web.V2.Controllers
     public class NavController : Controller
     {
         ProdutoModeloRepositorio _repositorio = new ProdutoModeloRepositorio();
+        private ProdutosViewModel _model = new ProdutosViewModel();
         // GET: Nav
         public ActionResult Index()
         {
-            return View();
+            var produtos = _repositorio.ObterProdutosVitrine();
+            _model = new ProdutosViewModel { Produtos = produtos };
+            return View(_model);
         }
 
         public JsonResult TesteMetodoVitrine()

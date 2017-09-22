@@ -7,6 +7,8 @@ namespace Quiron.LojaVirtual.Web.V2.Models
 {
     public class ProdutosViewModel
     {
-        public List<ProdutoVitrine> Produtos { get; set; }
+        public List<Dominio.Entidade.ProdutoVitrine> Produtos { get; set; }
+        public string Titulo { get; set; }
+
     }
 }
