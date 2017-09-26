@@ -1179,12 +1179,11 @@ strong{
 .shop-items .item-price{
 	margin: 7px 5px;
 	display: inline-block;
-	border-radius: 5px;
 	font-size: 13px;
 	font-weight: bold;
    background:#006400;
    color:#fff;
-   width:40px;
+   width:70px;
    text-align:center;
 }
 

@@ -57,15 +57,13 @@ app.ObterEsportes = function () {
 };
 
 app.ObterMarcas = function () {
-
     $.getJSON('/menu/obtermarcas', function (data) {
-
         $(data).each(function () {
-            $(".marcas").append("<li><a href='#'>" + this.MarcaDescricao + "</a></li>");
+            $("#marcas").append("<li><a href='/nav/" + this.MarcaCodigo + "/" + this.MarcaDescricaoSeo + "'>" + this.MarcaDescricao + "</a></li>");
+            $("#calcadosmarcas").append("<li><a href='/nav/0003/calcados/" + this.MarcaCodigo + "/" + this.MarcaDescricaoSeo + "'>" + this.MarcaDescricao + "</a></li>");
+            $("#roupasmarcas").append("<li><a href='/nav/0001/roupas/" + this.MarcaCodigo + "/" + this.MarcaDescricaoSeo + "'>" + this.MarcaDescricao + "</a></li>");
         });
-
     });
-
 };
 
 

@@ -19,6 +19,7 @@ namespace Quiron.LojaVirtual.Dominio.Repositorio
         public DbSet<Marca> Marcas { get; set; }
         public DbSet<Modalidade> Modalidades { get; set; }
         public DbSet<ProdutoVitrine> ProdutosVitrine { get; set; }
+        public DbSet<SubGrupo> SubGrupos { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();

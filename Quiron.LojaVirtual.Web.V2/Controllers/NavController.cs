@@ -12,6 +12,8 @@ namespace Quiron.LojaVirtual.Web.V2.Controllers
     {
         ProdutoModeloRepositorio _repositorio = new ProdutoModeloRepositorio();
         private ProdutosViewModel _model = new ProdutosViewModel();
+        private MenuRepositorio _menuRepositorio = new MenuRepositorio();
+
         // GET: Nav
         public ActionResult Index()
         {
@@ -20,18 +22,54 @@ namespace Quiron.LojaVirtual.Web.V2.Controllers
             return View(_model);
         }
 
-        public JsonResult TesteMetodoVitrine()
+        [Route("nav/{id}/{marca}")]
+        public ActionResult ObterProdutosPorMarca(string id, string marca)
         {
-            var produtos = _repositorio.ObterProdutosVitrine(categoria:"0083", marca:"1106");
-               
-            return Json(produtos, JsonRequestBehavior.AllowGet);
+            var produtos = _repositorio.ObterProdutosVitrine(marca: marca);
+            _model = new ProdutosViewModel { Produtos = produtos, Titulo = marca };
+
+            return View("Navegacao", _model);
         }
 
-        [Route("nav/{id}/{marca}")]
-        public ActionResult ObterProdutosPorMarcas(string id)
+        [Route("nav/times/{id}/{clube}")]
+        public ActionResult ObterProdutosPorClubes(string id, string clube)
         {
-            var _model = new ProdutosViewModel { Produtos = null };
-            return View("Idex", _model);
+            var produtos = _repositorio.ObterProdutosVitrine(linha: id);
+            var _model = new ProdutosViewModel { Produtos = produtos, Titulo = clube };
+            return View("Navegacao", _model);
         }
+
+        [Route("nav/genero/{id}/{genero}")]
+        public ActionResult ObterProdutosPorGenero(string id, string genero)
+        {
+            var produtos = _repositorio.ObterProdutosVitrine(genero: genero);
+            _model = new ProdutosViewModel { Produtos = produtos, Titulo = genero };
+
+            return View("Navegacao", _model);
+        }
+
+        [ChildActionOnly]
+        [OutputCache(Duration =3600, VaryByParam ="*")]
+        public ActionResult TenisCategoria()
+        {
+            var categorias = _menuRepositorio.ObterTenisCategoira();
+            var subGrupo = _menuRepositorio.SubGrupoTenis();
+
+            var model = new SubGrupoCategoriasViewModel
+            {
+                Categorias = categorias,
+                SubGrupo = subGrupo
+            };
+            return PartialView("_TenisCategoria", model);
+        }
+
+        [Route("calcados/{subGrupoCodigo}/tenis/{categoriaCodigo}/{categoriaDescricao}")]
+        public ActionResult ObterTenisPorCategoria(string subGrupoCodigo, string categoriaCodigo, string categoriaDescricao)
+        {
+            var produtos = _repositorio.ObterProdutosVitrine(categoriaCodigo, subgrupo: subGrupoCodigo);
+            _model = new ProdutosViewModel { Produtos = produtos, Titulo = categoriaDescricao.ToUpper() };
+            return View("_Navegacao", _model);
+        }
+
     }
 }
