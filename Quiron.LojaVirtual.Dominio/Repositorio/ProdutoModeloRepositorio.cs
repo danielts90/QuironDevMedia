@@ -17,7 +17,8 @@ namespace Quiron.LojaVirtual.Dominio.Repositorio
                                                          string subgrupo = null, 
                                                          string linha = null, 
                                                          string marca = null,
-                                                         string modalidade = null)
+                                                         string modalidade = null, 
+                                                         string busca = null)
         {
             var query = from p in _context.ProdutosVitrine select p;
 
@@ -41,6 +42,13 @@ namespace Quiron.LojaVirtual.Dominio.Repositorio
 
             if (!string.IsNullOrEmpty(modalidade))
                 query = query.Where(p => p.ModalidadeCodigo == modalidade);
+
+            if(!string.IsNullOrEmpty(busca))
+            {
+                //query = query.Where(p => p.ProdutoDescricao.StartsWith(busca));
+                //query = query.Where(p => p.ProdutoDescricao.EndsWith(busca));
+                query = query.Where(p => p.ProdutoDescricao.Contains(busca));
+            }
 
             query = query.OrderBy(p => Guid.NewGuid());
             query = query.Take(40);

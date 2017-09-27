@@ -20,6 +20,11 @@ namespace Quiron.LojaVirtual.Web.V2
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Nav", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                "BuscaProduto",
+                "busca/{termo}",
+                new { controller = "Nav", action = "ConsultarProduto", termo = UrlParameter.Optional });
         }
     }
 }
