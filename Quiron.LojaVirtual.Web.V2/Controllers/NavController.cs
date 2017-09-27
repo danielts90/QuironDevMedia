@@ -25,7 +25,7 @@ namespace Quiron.LojaVirtual.Web.V2.Controllers
         [Route("nav/{id}/{marca}")]
         public ActionResult ObterProdutosPorMarca(string id, string marca)
         {
-            var produtos = _repositorio.ObterProdutosVitrine(marca: marca);
+            var produtos = _repositorio.ObterProdutosVitrine(marca: id);
             _model = new ProdutosViewModel { Produtos = produtos, Titulo = marca };
 
             return View("Navegacao", _model);
@@ -99,6 +99,36 @@ namespace Quiron.LojaVirtual.Web.V2.Controllers
 
             return View("Navegacao", _model);
         }
-        #endregion 
+        #endregion
+
+        #region Suplementos
+        [ChildActionOnly]
+        [OutputCache(Duration = 3600, VaryByParam = "*")]
+        public ActionResult Suplementos()
+        {
+            var categoria = _menuRepositorio.Suplemento();
+            var subGrupos = _menuRepositorio.ObterSuplementos();
+
+            CategoriaSubGrupoViewModel model = new CategoriaSubGrupoViewModel
+            {
+                Categoria = categoria,
+                SubGrupos = subGrupos
+            };
+
+            return PartialView("_Suplementos", model);
+        }
+
+
+
+        [Route("{categoriaCodigo}/suplementos/{subGrupoCodigo}/{subGrupoDescricao}")]
+        public ActionResult ObterCategoriaSubGrupos(string categoriaCodigo, string subGrupoCodigo, string subGrupoDescricao)
+        {
+            var produtos = _repositorio.ObterProdutosVitrine(categoriaCodigo, subgrupo: subGrupoCodigo);
+            _model = new ProdutosViewModel { Produtos = produtos, Titulo = subGrupoDescricao };
+            return View("Navegacao", _model);
+
+        }
+
+        #endregion
     }
 }

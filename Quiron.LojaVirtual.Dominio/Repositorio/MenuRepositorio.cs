@@ -67,5 +67,20 @@ namespace Quiron.LojaVirtual.Dominio.Repositorio
             return query.Project().To<SubGrupoDto>().ToList();
 
         }
+
+        public Categoria Suplemento()
+        {
+            var CATEGORIA_SUPLEMENTOS = "0008";
+            return _context.Categorias.FirstOrDefault(s => s.CategoriaCodigo == CATEGORIA_SUPLEMENTOS);
+        }
+
+        public IEnumerable<SubGrupo> ObterSuplementos()
+        {
+            var subGrupos = new[]
+            { "0162","0381","0557","0564","0565","1082","1083","1084","1085"};
+            return _context.SubGrupos.Where(s => subGrupos.Contains(s.SubGrupoCodigo))
+                .Where(s => s.GrupoCodigo == "0012")
+                .OrderBy(s => s.SubGrupoDescricao);
+        }
     }
 }
