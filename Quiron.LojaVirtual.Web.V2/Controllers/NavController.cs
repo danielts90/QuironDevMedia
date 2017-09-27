@@ -66,10 +66,39 @@ namespace Quiron.LojaVirtual.Web.V2.Controllers
         [Route("calcados/{subGrupoCodigo}/tenis/{categoriaCodigo}/{categoriaDescricao}")]
         public ActionResult ObterTenisPorCategoria(string subGrupoCodigo, string categoriaCodigo, string categoriaDescricao)
         {
-            var produtos = _repositorio.ObterProdutosVitrine(categoriaCodigo, subgrupo: subGrupoCodigo);
+            var produtos = _repositorio.ObterProdutosVitrine(categoria: categoriaCodigo, subgrupo: subGrupoCodigo);
             _model = new ProdutosViewModel { Produtos = produtos, Titulo = categoriaDescricao.ToUpper() };
-            return View("_Navegacao", _model);
+            return View("Navegacao", _model);
         }
 
+        #region Casual 
+        [OutputCache(Duration = 3600, VaryByParam = "*")]
+        public ActionResult CasualSubGrupo()
+        {
+            var casual = _menuRepositorio.ModalidadeCasual();
+            var subGrupo = _menuRepositorio.ObterCasualSubgrupo();
+
+            var model = new ModalidadeSubGrupoViewModel
+            {
+                Modalidade = casual,
+                SubGrupos = subGrupo
+            };
+
+            return PartialView("_CasualSubGrupo", model);
+        }
+
+        [Route("modalidadeCodigo/casual/{subGrupoCodigo}/{subGrupoDescricao}")]
+        public ActionResult ObterModalidadeSubGrupo(string modalidadeCodigo, string subGrupoCodigo, string subGrupoDescricao)
+        {
+            var produtos = _repositorio.ObterProdutosVitrine(modalidade: modalidadeCodigo, subgrupo: subGrupoCodigo);
+            _model = new ProdutosViewModel()
+            {
+                Produtos = produtos,
+                Titulo = subGrupoDescricao.ToUpper()
+            };
+
+            return View("Navegacao", _model);
+        }
+        #endregion 
     }
 }

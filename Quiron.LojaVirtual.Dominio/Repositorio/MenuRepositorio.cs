@@ -1,10 +1,13 @@
-﻿using Quiron.LojaVirtual.Dominio.Entidade;
+﻿using Quiron.LojaVirtual.Dominio.Dto;
+using Quiron.LojaVirtual.Dominio.Entidade;
 using Quiron.LojaVirtual.Dominio.Entidade.Vitrine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FastMapper;
+
 
 namespace Quiron.LojaVirtual.Dominio.Repositorio
 {
@@ -40,6 +43,29 @@ namespace Quiron.LojaVirtual.Dominio.Repositorio
         public SubGrupo SubGrupoTenis()
         {
             return _context.SubGrupos.FirstOrDefault(s => s.SubGrupoCodigo == "0084");
+        }
+
+        public Modalidade ModalidadeCasual()
+        {
+            const string CODIGOMODALIDADE = "0001";
+            return _context.Modalidades.FirstOrDefault(m => m.ModalidadeCodigo == CODIGOMODALIDADE);
+        }
+
+        public IEnumerable<SubGrupoDto> ObterCasualSubgrupo()
+        {
+            var subGrupos = new[] {"0001","0102","0103","0738","0084","0921" };
+            var query = from s in _context.SubGrupos
+                        .Where(s => subGrupos.Contains(s.SubGrupoCodigo))
+                        .Select(s => new { s.SubGrupoCodigo, s.SubGrupoDescricao })
+                        .Distinct()
+                        .OrderBy(s => s.SubGrupoDescricao)
+                        select new
+                        {
+                            s.SubGrupoCodigo,
+                            s.SubGrupoDescricao
+                        };
+            return query.Project().To<SubGrupoDto>().ToList();
+
         }
     }
 }
