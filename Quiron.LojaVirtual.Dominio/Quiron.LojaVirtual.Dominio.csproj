@@ -74,6 +74,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dto\BreadCrumbDto.cs" />
     <Compile Include="Dto\DetalhesProdutoDto.cs" />
     <Compile Include="Dto\SubGrupoDto.cs" />
     <Compile Include="Entidade\Administradores.cs" />
@@ -90,6 +91,7 @@
     <Compile Include="Entidade\Modalidade.cs" />
     <Compile Include="Entidade\Pedido.cs" />
     <Compile Include="Entidade\Produto.cs" />
+    <Compile Include="Entidade\ProdutoModelo.cs" />
     <Compile Include="Entidade\ProdutoVItrine.cs" />
     <Compile Include="Entidade\QuironProduto.cs" />
     <Compile Include="Entidade\SubGrupo.cs" />

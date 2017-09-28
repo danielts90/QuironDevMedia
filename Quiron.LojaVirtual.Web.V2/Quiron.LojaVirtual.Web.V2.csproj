@@ -46,6 +46,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.1.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.1.0\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -149,6 +152,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CategoriaController.cs" />
+    <Compile Include="Controllers\DetalhesProdutosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\NavController.cs" />
@@ -158,6 +162,7 @@
     <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="HtmlHelpers\StringHelpers.cs" />
     <Compile Include="Models\CategoriaSubGrupoViewModel.cs" />
+    <Compile Include="Models\DetalhesProdutoViewModel.cs" />
     <Compile Include="Models\ModalidadeSubGrupoViewModel.cs" />
     <Compile Include="Models\ProdutosViewModel.cs" />
     <Compile Include="Models\ProdutoVitrine.cs" />
@@ -230,10 +235,12 @@
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\custom.js" />
     <Content Include="js\ddlevelsmenu.js" />
+    <Content Include="js\detalhesproduto.js" />
     <Content Include="js\filter.js" />
     <Content Include="js\html5shiv.js" />
     <Content Include="js\jquery.carouFredSel-6.2.1-packed.js" />
     <Content Include="js\jquery.countdown.min.js" />
+    <Content Include="js\jquery.elevatezoom.js" />
     <Content Include="js\jquery.js" />
     <Content Include="js\jquery.navgoco.js" />
     <Content Include="js\jquery.plugin.min.js" />
@@ -309,10 +316,12 @@
     <Content Include="Views\Nav\_TenisCategoria.cshtml" />
     <Content Include="Views\Nav\_CasualSubGrupo.cshtml" />
     <Content Include="Views\Nav\_Suplementos.cshtml" />
+    <Content Include="Views\DetalhesProduto\Detalhes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Categoria\" />
+    <Folder Include="Views\DetalhesProdutos\" />
     <Folder Include="Views\Menu\" />
   </ItemGroup>
   <ItemGroup>
