@@ -32,7 +32,7 @@ namespace Quiron.LojaVirtual.Web.V2
 
             bundles.Add(new ScriptBundle("~/Scripts/detalhesproduto").Include(
                             "~/js/jquery.elevatezoom.js",
-                            "~/Scripts/detalhesproduto.js"));
+                            "~/js/detalhesproduto.js"));
 
 
 

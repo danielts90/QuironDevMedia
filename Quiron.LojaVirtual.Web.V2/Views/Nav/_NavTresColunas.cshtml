@@ -49,7 +49,7 @@
 
                     </h5>
                     <div class="clearfix"></div>
-                    <!-- Para. Note more than 2 lines. -->
+                    @*<!-- Para. Note more than 2 lines. -->
                     <p>@Model.Produtos[i].MarcaDescricao</p>
                     <hr />
                     <!-- Price -->
@@ -59,8 +59,16 @@
                     <div class="clearfix"></div>
                     <!-- Add to cart -->
                     <div class="pull-right"><a href="#" class="btn btn-danger btn-sm">Comprar</a></div>
-                    <div class="clearfix"></div>
+                    <div class="clearfix"></div>*@
 
+                    <div class="Item-details">
+                        
+                        <div class="clearfix"></div>
+                        <p>@Model.Produtos[i].MarcaDescricao</p>
+                        <div class="item-price pull-left">@Model.Produtos[i].Preco.ToString("c")</div>
+                        <div class="pull-rigth"><a class="btn btn-danger btn-sm" href="#">Comprar</a></div>
+                        <div class="clearfix"></div>
+                    </div>
 
 
                 </div>
