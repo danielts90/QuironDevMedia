@@ -1,11 +1,12 @@
-﻿using Quiron.LojaVirtual.Dominio.Entidade;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using Quiron.LojaVirtual.Dominio.Entidade;
 using Quiron.LojaVirtual.Dominio.Entidade.Vitrine;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace Quiron.LojaVirtual.Dominio.Repositorio
 {
-    public class EfDbContext : DbContext
+    public class EfDbContext : IdentityDbContext<Cliente>
     {
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Administrador> Administradores { get; set; }
@@ -31,6 +32,8 @@ namespace Quiron.LojaVirtual.Dominio.Repositorio
             modelBuilder.Entity<Produto>().ToTable("Produtos");
             modelBuilder.Entity<Categoria>().ToTable("Categoria");
             modelBuilder.Entity<Administrador>().ToTable("Administradores");
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

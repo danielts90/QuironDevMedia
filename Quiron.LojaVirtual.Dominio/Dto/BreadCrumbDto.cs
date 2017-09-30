@@ -14,6 +14,7 @@ namespace Quiron.LojaVirtual.Dominio.Dto
         public string GeneroCodigo { get; set; }
         public string GeneroDescricao { get; set; }
         public string CategoriaDescricao { get; set; }
+        public string CategoriaCodigo { get; set; }
         public string GrupoDescricao { get; set; }
         public string GrupoCodigo { get; set; }
     }
