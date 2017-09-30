@@ -142,5 +142,23 @@ namespace Quiron.LojaVirtual.Web.V2.Controllers
 
             return View("Navegacao", _model);
         }
+
+        [Route("nav/grupo/{id}/{grupo}")]
+        public ActionResult ObterProdutosPorGrupo(string id, string grupo)
+        {
+            var produtos = _repositorio.ObterProdutosVitrine(grupo: id);
+            _model = new ProdutosViewModel { Produtos = produtos, Titulo = grupo };
+            return View("Navegacao", _model);
+        }
+
+        [Route("nav/categoria/{id}/{categoria}")]
+        public ActionResult ObterProdutosPorCategoria(string id, string categoria)
+        {
+            var produtos = _repositorio.ObterProdutosVitrine(categoria: id);
+            _model = new ProdutosViewModel { Produtos = produtos, Titulo = categoria };
+            return View("Navegacao", _model);
+        }
+
+
     }
 }

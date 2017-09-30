@@ -317,6 +317,7 @@
     <Content Include="Views\Nav\_CasualSubGrupo.cshtml" />
     <Content Include="Views\Nav\_Suplementos.cshtml" />
     <Content Include="Views\DetalhesProduto\Detalhes.cshtml" />
+    <Content Include="Views\DetalhesProduto\_BreadCrumb.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
