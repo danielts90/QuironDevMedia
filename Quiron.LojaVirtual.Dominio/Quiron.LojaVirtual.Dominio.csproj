@@ -114,6 +114,10 @@
     <Compile Include="Migrations\201709301453109_CriaClienteNoDb.Designer.cs">
       <DependentUpon>201709301453109_CriaClienteNoDb.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710012306547_Tabelas Asp.Net Identity.cs" />
+    <Compile Include="Migrations\201710012306547_Tabelas Asp.Net Identity.Designer.cs">
+      <DependentUpon>201710012306547_Tabelas Asp.Net Identity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorio\AdministradoresRepositorio.cs" />
@@ -128,6 +132,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201709301453109_CriaClienteNoDb.resx">
       <DependentUpon>201709301453109_CriaClienteNoDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710012306547_Tabelas Asp.Net Identity.resx">
+      <DependentUpon>201710012306547_Tabelas Asp.Net Identity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

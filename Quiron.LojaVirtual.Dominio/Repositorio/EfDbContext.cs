@@ -8,6 +8,10 @@ namespace Quiron.LojaVirtual.Dominio.Repositorio
 {
     public class EfDbContext : IdentityDbContext<Cliente>
     {
+        public EfDbContext() : base("EfDbContext",false)
+        {
+
+        }
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Administrador> Administradores { get; set; }
         public DbSet<Categoria> Categorias { get; set; }
@@ -29,9 +33,9 @@ namespace Quiron.LojaVirtual.Dominio.Repositorio
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-            modelBuilder.Entity<Produto>().ToTable("Produtos");
-            modelBuilder.Entity<Categoria>().ToTable("Categoria");
-            modelBuilder.Entity<Administrador>().ToTable("Administradores");
+            //modelBuilder.Entity<Produto>().ToTable("Produtos");
+            //modelBuilder.Entity<Categoria>().ToTable("Categoria");
+            //modelBuilder.Entity<Administrador>().ToTable("Administradores");
 
             base.OnModelCreating(modelBuilder);
         }
