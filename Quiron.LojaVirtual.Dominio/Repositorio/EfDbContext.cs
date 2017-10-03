@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using Quiron.LojaVirtual.Dominio.Entidade;
 using Quiron.LojaVirtual.Dominio.Entidade.Vitrine;
+using System;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 
@@ -12,6 +13,12 @@ namespace Quiron.LojaVirtual.Dominio.Repositorio
         {
 
         }
+
+        public static IDisposable Create()
+        {
+            return new EfDbContext();
+        }
+
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Administrador> Administradores { get; set; }
         public DbSet<Categoria> Categorias { get; set; }
