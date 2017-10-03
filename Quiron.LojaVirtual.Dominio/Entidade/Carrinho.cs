@@ -6,7 +6,7 @@ namespace Quiron.LojaVirtual.Dominio.Entidade
     public class Carrinho
     {
         private readonly List<ItemCarrinho> _itemCarrinho = new List<ItemCarrinho>();
-        public void AdicionarItem(Produto produto, int quantidade)
+        public void AdicionarItem(QuironProduto produto, int quantidade)
         {
             var item = _itemCarrinho.FirstOrDefault(p => p.Produto.ProdutoId == produto.ProdutoId);
 
@@ -23,7 +23,7 @@ namespace Quiron.LojaVirtual.Dominio.Entidade
                 item.Quantidade = quantidade;
             }
         }
-        public void RemoverItem(Produto produto)
+        public void RemoverItem(QuironProduto produto)
         {
             _itemCarrinho.RemoveAll(p => p.Produto.ProdutoId == produto.ProdutoId);
         }
@@ -43,7 +43,7 @@ namespace Quiron.LojaVirtual.Dominio.Entidade
 
     public class ItemCarrinho
     {
-        public Produto Produto { get; set; }
+        public QuironProduto Produto { get; set; }
         public int Quantidade { get; set; }
     }
 }

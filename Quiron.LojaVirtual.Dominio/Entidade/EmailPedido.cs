@@ -45,7 +45,7 @@ namespace Quiron.LojaVirtual.Dominio.Entidade
                 {
                     var subtotal = item.Produto.Preco * item.Quantidade;
                     body.AppendFormat("{0} x {1} (subtotal: {2:c}",
-                        item.Quantidade, item.Produto.Nome, subtotal);
+                        item.Quantidade, item.Produto.ProdutoDescricao, subtotal);
                 }
 
                 body.AppendFormat("Valor total do pedido: {0:c}", carrinho.ObterValorTotal())

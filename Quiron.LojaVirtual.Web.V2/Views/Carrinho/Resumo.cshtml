@@ -1,0 +1,5 @@
+﻿@model Quiron.LojaVirtual.Dominio.Entidade.Carrinho
+
+<i class="fa fa-shopping-cart"></i>
+@Model.ItensCarrinho.Sum(x => x.Quantidade) item(s), 
+    @Model.ObterValorTotal().ToString("c")

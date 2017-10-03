@@ -128,6 +128,7 @@
     <Compile Include="Repositorio\MenuRepositorio.cs" />
     <Compile Include="Repositorio\ProdutoModeloRepositorio.cs" />
     <Compile Include="Repositorio\ProdutosRepositorio.cs" />
+    <Compile Include="Repositorio\QuironProdutosRepositorio.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201709301453109_CriaClienteNoDb.resx">
