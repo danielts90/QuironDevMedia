@@ -39,6 +39,7 @@ namespace Quiron.LojaVirtual.Dominio.Entidade
 
         }
 
+        public virtual ICollection<ProdutoPedido> ProdutoPedido { get; set; }
 
     }
 }

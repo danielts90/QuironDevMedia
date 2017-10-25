@@ -185,6 +185,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\NavController.cs" />
+    <Compile Include="Controllers\PedidosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -362,6 +363,8 @@
     <Content Include="Views\Carrinho\Index.cshtml" />
     <Content Include="Views\Carrinho\PedidoConcluido.cshtml" />
     <Content Include="Views\Carrinho\Resumo.cshtml" />
+    <Content Include="Views\Pedidos\Index.cshtml" />
+    <Content Include="Views\Pedidos\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

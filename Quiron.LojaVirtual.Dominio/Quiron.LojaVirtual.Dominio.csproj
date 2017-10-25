@@ -101,6 +101,7 @@
     <Compile Include="Entidade\Pedido.cs" />
     <Compile Include="Entidade\Produto.cs" />
     <Compile Include="Entidade\ProdutoModelo.cs" />
+    <Compile Include="Entidade\ProdutoPedido.cs" />
     <Compile Include="Entidade\ProdutoVItrine.cs" />
     <Compile Include="Entidade\QuironProduto.cs" />
     <Compile Include="Entidade\SubGrupo.cs" />
@@ -118,6 +119,10 @@
     <Compile Include="Migrations\201710012306547_Tabelas Asp.Net Identity.Designer.cs">
       <DependentUpon>201710012306547_Tabelas Asp.Net Identity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710050033342_AddPedido.cs" />
+    <Compile Include="Migrations\201710050033342_AddPedido.Designer.cs">
+      <DependentUpon>201710050033342_AddPedido.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorio\AdministradoresRepositorio.cs" />
@@ -126,6 +131,7 @@
     <Compile Include="Repositorio\DetalhesProdutoRepositorio.cs" />
     <Compile Include="Repositorio\EfDbContext.cs" />
     <Compile Include="Repositorio\MenuRepositorio.cs" />
+    <Compile Include="Repositorio\PedidoRepositorio.cs" />
     <Compile Include="Repositorio\ProdutoModeloRepositorio.cs" />
     <Compile Include="Repositorio\ProdutosRepositorio.cs" />
     <Compile Include="Repositorio\QuironProdutosRepositorio.cs" />
@@ -136,6 +142,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710012306547_Tabelas Asp.Net Identity.resx">
       <DependentUpon>201710012306547_Tabelas Asp.Net Identity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710050033342_AddPedido.resx">
+      <DependentUpon>201710050033342_AddPedido.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

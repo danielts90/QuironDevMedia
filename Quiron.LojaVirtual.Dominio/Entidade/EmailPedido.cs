@@ -29,7 +29,7 @@ namespace Quiron.LojaVirtual.Dominio.Entidade
                     _emailConfiguracoes.Usuario,
                     _emailConfiguracoes.ServidorSmtp);
 
-                if(_emailConfiguracoes.EscreverArquivo)
+                if (_emailConfiguracoes.EscreverArquivo)
                 {
                     smtpClient.DeliveryMethod = SmtpDeliveryMethod.SpecifiedPickupDirectory;
                     smtpClient.PickupDirectoryLocation = _emailConfiguracoes.PastaArquivo;
@@ -48,16 +48,16 @@ namespace Quiron.LojaVirtual.Dominio.Entidade
                         item.Quantidade, item.Produto.ProdutoDescricao, subtotal);
                 }
 
-                body.AppendFormat("Valor total do pedido: {0:c}", carrinho.ObterValorTotal())
-                    .AppendLine("------------------------------------")
-                    .AppendLine("Enviar para:")
-                    .AppendLine(pedido.NomeCliente)
-                    .AppendLine(pedido.Email)
-                    .AppendLine(pedido.Endereco ?? "")
-                    .AppendLine(pedido.Cidade ?? "")
-                    .AppendLine(pedido.Complemento ?? "")
-                    .AppendLine("----------------------------------")
-                    .AppendFormat("Para presente?: {0}", pedido.EmbrulhaPresente ? "Sim" : "Não");
+                //body.AppendFormat("Valor total do pedido: {0:c}", carrinho.ObterValorTotal())
+                //    .AppendLine("------------------------------------")
+                //    .AppendLine("Enviar para:")
+                //    .AppendLine(pedido.NomeCliente)
+                //    .AppendLine(pedido.Email)
+                //    .AppendLine(pedido.Endereco ?? "")
+                //    .AppendLine(pedido.Cidade ?? "")
+                //    .AppendLine(pedido.Complemento ?? "")
+                //    .AppendLine("----------------------------------")
+                //    .AppendFormat("Para presente?: {0}", pedido.EmbrulhaPresente ? "Sim" : "Não");
 
                 var mailMessage = new MailMessage(
                     _emailConfiguracoes.De,
@@ -65,7 +65,7 @@ namespace Quiron.LojaVirtual.Dominio.Entidade
                     "Novo pedido",
                     body.ToString());
 
-                if(_emailConfiguracoes.EscreverArquivo)
+                if (_emailConfiguracoes.EscreverArquivo)
                 {
                     mailMessage.BodyEncoding = Encoding.GetEncoding("ISO-8859-1");
                 }

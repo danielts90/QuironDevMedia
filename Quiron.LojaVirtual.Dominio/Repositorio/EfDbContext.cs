@@ -37,6 +37,8 @@ namespace Quiron.LojaVirtual.Dominio.Repositorio
         public DbSet<QuironProduto> QuironProdutos { get; set; }
         public DbSet<Estoque> Estoques { get; set; }
         public DbSet<ProdutoModelo> ProdutoModelo { get; set; }
+        public DbSet<Pedido> Pedidos { get; set; }
+        public DbSet<ProdutoPedido> ProdutosPedidos { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
