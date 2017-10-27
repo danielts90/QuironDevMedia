@@ -10,15 +10,18 @@
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary()
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.ClienteId)
 
     <h3>Enviar para</h3>
     <div class="form-group">
         <label>Nome do cliente</label>
-        @Html.TextBoxFor(x => x.NomeCliente, new { @class = "form-control" })
-        @Html.ValidationMessageFor(x => x.NomeCliente, "Informe o seu nome");
+        @Html.TextBoxFor(x => x.Cliente.NomeCompleto, new { @class = "form-control", disable = true })
     </div>
 
-    foreach (var property in ViewData.ModelMetadata.Properties)
+    @Html.DisplayFor(m => m.Cliente.Endereco);
+
+    @*foreach (var property in ViewData.ModelMetadata.Properties)
     {
         if (property.PropertyName != "NomeCliente" && property.PropertyName != "EmbrulhaPresente")
         {
@@ -27,7 +30,7 @@
                 @Html.TextBox(property.PropertyName,null, new { @class = "form-control" })
             </div>
         }
-    } 
+    }*@ 
     <h3>Opções</h3>
     <div class="checkbox">
         <label>
@@ -39,7 +42,7 @@
     <input class="btn btn-primary" type="submit" value="Fechar Pedido"/>
 
 }
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+@*<script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script>
     $('#Cep').change(function (e) {
        
@@ -65,4 +68,4 @@
         });
 
     });
-</script>
+</script>*@
