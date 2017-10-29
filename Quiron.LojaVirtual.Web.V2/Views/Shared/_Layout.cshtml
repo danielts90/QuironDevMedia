@@ -24,7 +24,7 @@
 
 
 
-
+    
 
     <!-- Shopping cart Modal -->
     <div class="modal fade" id="shoppingcart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -64,7 +64,7 @@
                         
 
                         <a href="@Url.Action("CriaCliente", "Cliente")">Meu cadastro</a>
-                        <a href="register.html">Meus pedidos</a>
+                        <a href="@Url.Action("Index", "Pedidos")">Meus pedidos</a>
                         <a id="cartMenu" data-toggle="modal" href="#shoppingcart"
                            data-url="@Url.Action("Resumo", "Carrinho")"></a>
                     </div>
